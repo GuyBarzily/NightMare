@@ -18,6 +18,17 @@ public class Bullet : MonoBehaviour
     {
         if(collision.gameObject.CompareTag(zombieTag))
              Destroy(collision.gameObject);
-        //Destroy(gameObject);
+        Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Zombie zombie = other.gameObject.GetComponent<Zombie>();
+        
+        if (zombie != null)
+        {
+
+            zombie.TakeDamage();
+        }
     }
 }
